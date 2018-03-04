@@ -596,6 +596,8 @@ data = data.map(item => {
 let LineKeys = Object.keys(data[0]);
 LineKeys = LineKeys.filter(key => !(key == 'date' || key=='agency'));
 
+let colors = ['#B0F566', '#4AF2A1', '#5CC9F5', '#6638F0', '#F78AE0'];
+
 const Test = () => (
     <LineChart width={900} height={400} data={data}
                margin={{top: 5, right: 30, left: 20, bottom: 5}}>
@@ -605,7 +607,7 @@ const Test = () => (
         <Tooltip/>
         <Legend />
         {
-            LineKeys.map(key => <Line dataKey={key} stroke={'#8884d8'} />)
+            LineKeys.map((key, index)=> <Line dataKey={key} stroke={colors[index%colors.length]} />)
         }
     </LineChart>
 );
