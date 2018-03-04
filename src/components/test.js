@@ -1,5 +1,6 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+
+import LineGraph from './LineGraph';
 
 let data = [{
     date: '2017-07-18',
@@ -596,20 +597,19 @@ data = data.map(item => {
 let LineKeys = Object.keys(data[0]);
 LineKeys = LineKeys.filter(key => !(key == 'date' || key=='agency'));
 
-let colors = ['#B0F566', '#4AF2A1', '#5CC9F5', '#6638F0', '#F78AE0'];
-
+const dataYouGov = data.filter(x => x.agency == 'YouGov/The Times');
 const Test = () => (
-    <LineChart width={900} height={400} data={data}
-               margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-        <XAxis dataKey="date"/>
-        <YAxis/>
-        <CartesianGrid strokeDasharray="3 3"/>
-        <Tooltip/>
-        <Legend />
-        {
-            LineKeys.map((key, index)=> <Line dataKey={key} stroke={colors[index%colors.length]} />)
-        }
-    </LineChart>
+    <div>
+        <section>
+            <h2>General Result</h2>
+            <LineGraph data={data} lineKeys={LineKeys} />
+        </section>
+
+    <section>
+        <h2>Result By YouGov/The Times</h2>
+        <LineGraph data={dataYouGov} lineKeys={LineKeys} />
+    </section>
+    </div>
 );
 
 export default Test;
