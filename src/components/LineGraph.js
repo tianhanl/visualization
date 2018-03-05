@@ -12,7 +12,7 @@ const LineGraph = ({data, lineKeys, colors=defaultColors}) => (
         <Tooltip/>
         <Legend />
         {
-            lineKeys.map((key, index)=> <Line dataKey={key} stroke={colors[index%colors.length]} />)
+            lineKeys.map((key, index)=> <Line key={key} dataKey={key} stroke={colors[index%colors.length]} />)
         }
     </LineChart>
 );
