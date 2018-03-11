@@ -21,7 +21,7 @@ class GraphController extends React.Component {
     render() {
         return (
             <div>
-                <CheckboxGroup checkboxDepth={2} name="activeKeys"
+                <CheckboxGroup style={{padding:'1em'}} checkboxDepth={2} name="activeKeys"
                                value={this.state.activeKeys} onChange={this.activeKeysChanged}>
                     {
                         this.props.lineKeys.map(element => (

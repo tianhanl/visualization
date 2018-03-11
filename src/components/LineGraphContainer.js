@@ -7,7 +7,7 @@ class LineGraphContainer extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div >
                 {
                     this.props.dataList.map(element => (
                         <div key={element.name}>
