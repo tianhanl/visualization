@@ -1,6 +1,3 @@
-import React from 'react';
-
-import GraphController from './GraphController';
 let data = [{
     date: '2017-07-18',
     agency: 'YouGov/The Times',
@@ -587,19 +584,6 @@ let data = [{
         Lead: '0'
     }];
 
+const generateData = () => data.slice();
 
-data = data.map(item => {
-    item['Con'] = Number.parseFloat(item['Con']);
-    return item;
-});
-
-let LineKeys = Object.keys(data[0]);
-LineKeys = LineKeys.filter(key => !(key === 'date' || key === 'agency'));
-
-let agencies = new Set(data.map(element => element['agency']));
-let agencyArray = [...agencies];
-const Test = () => (
-    <GraphController data={data} lineKeys={LineKeys}/>
-);
-
-export default Test;
+export default generateData;
