@@ -52,21 +52,28 @@ class GraphController extends React.Component {
 
     render() {
         return (
-            <div>
-                <Select
-                    name={'separation-key'}
-                    value={this.state.activeSeparationKey}
-                    onChange={this.activeSeparationKeyChanged}
-                    options = {this.state.separationKeys}
-                />
-                <CheckboxGroup style={{padding:'1em'}} checkboxDepth={2} name="activeKeys"
-                               value={this.state.activeKeys} onChange={this.activeKeysChanged}>
-                    {
-                        this.props.lineKeys.map(element => (
-                            <label key={element}><Checkbox value={element}/> {element}</label>
-                        ))
-                    }
-                </CheckboxGroup>
+            <div style={{padding: '1em'}}>
+                <div style={{textAlign:'left',width:'80%', maxWidth: '960px', margin:'auto'}} className={'section'}>
+                    <h3 className={'section-heading'}>Separated by:</h3>
+                    <Select
+                        name={'separation-key'}
+                        value={this.state.activeSeparationKey}
+                        onChange={this.activeSeparationKeyChanged}
+                        options = {this.state.separationKeys}
+                    />
+                    <CheckboxGroup style={{padding:'1em', margin:0, padding: '1em 0'}} checkboxDepth={2} name="activeKeys"
+                                   value={this.state.activeKeys} onChange={this.activeKeysChanged}>
+                        {
+                            this.props.lineKeys.map(element => (
+                                <label style={{display:'inline-block'}} key={element}>
+                                    <Checkbox style={{verticalAlign: 'middle'}} value={element}/>
+                                    <span style={{verticalAlign: 'middle'}}>{element}</span>
+                                    </label>
+                            ))
+                        }
+                    </CheckboxGroup>
+                </div>
+
                 <LineGraphContainer dataList={this._groupBy(this.props.data, this.state.activeSeparationKey)}
                                     lineKeys={this.state.activeKeys}/>
             </div>
