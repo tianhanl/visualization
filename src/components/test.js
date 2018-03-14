@@ -599,7 +599,7 @@ LineKeys = LineKeys.filter(key => !(key === 'date' || key === 'agency'));
 let agencies = new Set(data.map(element => element['agency']));
 let agencyArray = [...agencies];
 const Test = () => (
-    <GraphController data={data} lineKeys={LineKeys}/>
+    <GraphController data={data} lineKeys={LineKeys} separationKeys={['agency']}/>
 );
 
 export default Test;
