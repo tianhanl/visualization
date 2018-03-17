@@ -1,6 +1,6 @@
 import React from 'react';
 import LineGraphContainer from './LineGraphContainer';
-import {Checkbox, CheckboxGroup} from 'react-checkbox-group';
+import { Checkbox, CheckboxGroup } from 'react-checkbox-group';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
@@ -8,9 +8,9 @@ import 'react-select/dist/react-select.css';
 class GraphController extends React.Component {
     constructor(props) {
         super(props);
-        let separationKeys = props.separationKeys?['original', ...props.separationKeys]:['original'];
+        let separationKeys = props.separationKeys ? ['original', ...props.separationKeys] : ['original'];
         separationKeys = separationKeys.map(key => ({
-           value: key,
+            value: key,
             label: key
         }));
         this.state = {
@@ -33,49 +33,49 @@ class GraphController extends React.Component {
     };
 
     _unique = (originalArray) => {
-      return Array.from(new Set(originalArray));
+        return Array.from(new Set(originalArray));
     };
 
     _groupBy = (originalArray, key) => {
-        if(!key || key==='original') {
+        if (!key || key === 'original') {
             return [{
                 name: 'original data',
                 data: originalArray
             }];
         }
-        return  this._unique(originalArray.map(element => element[key]))
+        return this._unique(originalArray.map(element => element[key]))
             .map(element => ({
-                name:element,
-                data:originalArray.filter(ele => ele[key] === element)
+                name: element,
+                data: originalArray.filter(ele => ele[key] === element)
             }));
     };
 
     render() {
         return (
-            <div style={{padding: '1em'}}>
-                <div style={{textAlign:'left',width:'80%', maxWidth: '960px', margin:'auto'}} className={'section'}>
+            <div style={{ padding: '1em' }}>
+                <div style={{ textAlign: 'left', width: '80%', maxWidth: '960px', margin: 'auto' }} className={'section'}>
                     <h3 className={'section-heading'}>Separated by:</h3>
                     <Select
                         name={'separation-key'}
                         value={this.state.activeSeparationKey}
                         onChange={this.activeSeparationKeyChanged}
-                        options = {this.state.separationKeys}
+                        options={this.state.separationKeys}
                     />
-                    <CheckboxGroup style={{padding:'1em', margin:0, padding: '1em 0'}} checkboxDepth={2} name="activeKeys"
-                                   value={this.state.activeKeys} onChange={this.activeKeysChanged}>
+                    <CheckboxGroup style={{ margin: 0, padding: '1em 0' }} checkboxDepth={2} name="activeKeys"
+                        value={this.state.activeKeys} onChange={this.activeKeysChanged}>
                         {
                             this.props.lineKeys.map(element => (
-                                <label style={{display:'inline-block'}} key={element}>
-                                    <Checkbox style={{verticalAlign: 'middle'}} value={element}/>
-                                    <span style={{verticalAlign: 'middle'}}>{element}</span>
-                                    </label>
+                                <label style={{ display: 'inline-block' }} key={element}>
+                                    <Checkbox style={{ verticalAlign: 'middle' }} value={element} />
+                                    <span style={{ verticalAlign: 'middle' }}>{element}</span>
+                                </label>
                             ))
                         }
                     </CheckboxGroup>
                 </div>
 
                 <LineGraphContainer dataList={this._groupBy(this.props.data, this.state.activeSeparationKey)}
-                                    lineKeys={this.state.activeKeys}/>
+                    lineKeys={this.state.activeKeys} />
             </div>
         )
     }
