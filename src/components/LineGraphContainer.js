@@ -1,5 +1,6 @@
 import React from 'react';
 import LineGraph from './LineGraph';
+import PropTypes from 'prop-types';
 
 class LineGraphContainer extends React.Component {
     render() {
@@ -16,6 +17,11 @@ class LineGraphContainer extends React.Component {
             </div>
         )
     }
+}
+
+LineGraphContainer.propTypes = {
+    dataList: PropTypes.array,
+    lineKeys: PropTypes.array
 }
 
 export default LineGraphContainer;

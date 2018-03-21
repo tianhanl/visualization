@@ -3,6 +3,7 @@ import LineGraphContainer from './LineGraphContainer';
 import { Checkbox, CheckboxGroup } from 'react-checkbox-group';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
+import PropTypes from 'prop-types';
 
 
 class GraphController extends React.Component {
@@ -80,5 +81,12 @@ class GraphController extends React.Component {
         )
     }
 }
+
+GraphController.propTypes = {
+    separationKeys: PropTypes.array,
+    data: PropTypes.array,
+    lineKeys: PropTypes.array
+}
+
 
 export default GraphController;
