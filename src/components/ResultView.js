@@ -63,6 +63,7 @@ prediction: '0' },
 'user con': '0',
 prediction: '0' }]
 
+
 const valueKeys = [
     "twitter pro",
     "twitter con",
@@ -80,23 +81,65 @@ const dataList = valueKeys.map(key => {
     })).filter(element => element['value']);
 });
 
-console.log(dataList);
+const actualResult = [
+  {
+    name: 'Thersea May',
+    value: 0.424
+  }, {
+    name: 'Jeremy Corbyn',
+    value: 0.400
+  }, {
+    name: 'Nicola Sturgeon',
+    value: 0.003
+  }, {
+    name: 'Tim Farron',
+    value: 0.007
+  }, {
+    name: 'Arlene Foster',
+    value: 0.001
+  }, {
+    name: 'Gerry Adams',
+    value: 0.001
+  }, {
+    name: 'Leanne Wood',
+    value: 0.001
+  }, {
+    name: 'Jonathan Bartley Caroline Lucas',
+    value: 0.002
+  }
+]
 
 
 
 
 const ResultView = () => (
-    <div style={{
-        padding: '1em'
+  <div style={{
+      padding: '1em'
     }}>
-        {
-            dataList.map((element, index) => (
-                <section>
-                    <h3>{valueKeys[index]}</h3>
-                <PieGraph key={valueKeys[index]} displayData={element} nameKey={'name'} valueKey={'value'}></PieGraph>
-            </section>))
-        }
-    </div>
+    <section>
+      <h3>
+        {'Prediction'}
+      </h3>
+      <PieGraph
+        key={'prediction'}
+        displayData={dataList[dataList.length-1]}
+        nameKey={'name'}
+        valueKey={'value'}>
+      </PieGraph>
+    </section>
+    format
+    <section>
+      <h3>
+        {'Actual Result'}
+      </h3>
+      <PieGraph
+        key={'actual result'}
+        displayData={actualResult}
+        nameKey={'name'}
+        valueKey={'value'}>
+      </PieGraph>
+    </section>
+  </div>
 );
 
 ResultView.propTypes = {
