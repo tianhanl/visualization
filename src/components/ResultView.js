@@ -76,7 +76,7 @@ const nameKey = 'candidate';
 const dataList = valueKeys.map(key => {
     return data.map(element => ({
         name: element[nameKey],
-        value: Number.parseFloat(element[key])
+        value: Math.round(Number.parseFloat(element[key]) * 1000)/1000
     })).filter(element => element['value']);
 });
 
