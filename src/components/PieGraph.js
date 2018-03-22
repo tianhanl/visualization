@@ -1,19 +1,20 @@
 import React from 'react';
-import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from 'recharts';
-const data01 = [{name: 'Group A', value: 400}, {name: 'Group B', value: 300},
-                  {name: 'Group C', value: 300}, {name: 'Group D', value: 200},
-                  {name: 'Group E', value: 278}, {name: 'Group F', value: 189}]
-
-const data02 = [{name: 'Group A', value: 2400}, {name: 'Group B', value: 4567},
-                  {name: 'Group C', value: 1398}, {name: 'Group D', value: 9800},
-                  {name: 'Group E', value: 3908}, {name: 'Group F', value: 4800}];
-
-const PieGraph = (displayData, valueKey) => (
-    <PieChart width={800} height={400}>
-        <Pie isAnimationActive={false} data={data01} cx={200} cy={200} outerRadius={80} fill="#8884d8" label/>
-        <Pie data={data02} cx={500} cy={200} innerRadius={40} outerRadius={80} fill="#82ca9d"/>
-        <Tooltip/>
-       </PieChart>
+import { ResponsiveContainer, PieChart, Pie, Tooltip, Legend, Cell } from 'recharts';
+const defaultColors = ['#B0F566', '#4AF2A1', '#5CC9F5', '#6638F0', '#F78AE0', '#FFBF45', '#515151'];
+const PieGraph = ({ displayData, valueKey, nameKey, colors = defaultColors }) => (
+    <ResponsiveContainer with={'90%'} height={400}>
+        <PieChart width={800} height={400}>
+            <Pie nameKey={nameKey} dataKey={valueKey}
+                isAnimationActive={false} data={displayData}
+                cx={'50%'} cy={'50%'} outerRadius={80} fill="#8884d8" label>
+                {
+                    displayData.map((entry, index) => <Cell fill={colors[index % colors.length]} />)
+                }
+            </Pie>
+            <Tooltip />
+            <Legend></Legend>
+        </PieChart>
+    </ResponsiveContainer>
 );
 
 export default PieGraph;

@@ -3,7 +3,7 @@ import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tool
 import './LineGraph.css';
 import PropTypes from 'prop-types';
 
-const defaultColors = ['#B0F566', '#4AF2A1', '#5CC9F5', '#6638F0', '#F78AE0'];
+const defaultColors = ['#B0F566', '#4AF2A1', '#5CC9F5', '#6638F0', '#F78AE0','#FFBF45', '#515151'];
 
 const LineGraph = ({ data, lineKeys, colors = defaultColors }) => (
     <ResponsiveContainer width={'90%'} height={400}>
