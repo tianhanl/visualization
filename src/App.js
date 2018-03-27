@@ -22,7 +22,9 @@ const tabContents = [
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div style={{
+          color: '#515151'
+        }} className="App">
         <TabbedGraphConntainer tabNames={tabNames} tabContents={tabContents} />
       </div>
     );

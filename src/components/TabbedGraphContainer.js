@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'react-tabs/style/react-tabs.css';
+import './TabbedGraphContainer.css';
 
 import {
   Tab,
@@ -38,7 +38,7 @@ class TabbedGraphContainer extends React.Component {
         {
           this.state.tabContents.map((content, index) => {
             const DynamicTag = content;
-            return (<TabPanel key={index}>
+            return (<TabPanel key={this.state.tabNames[index]}>
               <DynamicTag></DynamicTag>
             </TabPanel>)
           })

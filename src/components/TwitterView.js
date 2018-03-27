@@ -595,7 +595,12 @@ data = data.map(item => {
 });
 
 const TwitterView = () => (
-  <AreaGraph displayData={data} nameKey={'date'} valueKey={'Con'} />
+  <div style={{
+      padding: '0.5em'
+    }}>
+    <h3>Sample Area Graph</h3>
+    <AreaGraph displayData={data} nameKey={'date'} valueKey={'Con'} />
+  </div>
 );
 
 export default TwitterView;
