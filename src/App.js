@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TabbedGraphConntainer from './components/TabbedGraphContainer';
-import ResultView from './ResultView';
-import PollingView from './PollingView';
+import ResultView from './components/ResultView';
+import PollingView from './components/PollingView';
 const tabNames = [
   'Pollings',
   'Results'
@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <TabbedGraphConntainer />
+        <TabbedGraphConntainer tabNames={tabNames} tabContents={tabContents} />
       </div>
     );
   }
