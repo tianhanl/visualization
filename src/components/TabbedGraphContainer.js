@@ -29,16 +29,16 @@ class TabbedGraphContainer extends React.Component {
         <TabList>
           {
             this.state.tabNames.map(name => (
-              <Tab>
+              <Tab key={name}>
                 {name}
               </Tab>
             ))
           }
         </TabList>
         {
-          this.state.tabContents.map(content => {
+          this.state.tabContents.map((content, index) => {
             const DynamicTag = content;
-            return (<TabPanel>
+            return (<TabPanel key={index}>
               <DynamicTag></DynamicTag>
             </TabPanel>)
           })
