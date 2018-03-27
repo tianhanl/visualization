@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ResultView from './ResultView';
-import PollingView from './PollingView';
 import 'react-tabs/style/react-tabs.css';
 
 import {
@@ -16,6 +14,10 @@ import {
 class TabbedGraphContainer extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      tabNames: this.props.tabNames,
+      tabContents: this.props.tabContents
+    }
   }
 
   render() {
@@ -25,15 +27,22 @@ class TabbedGraphContainer extends React.Component {
         margin: 'auto'
       }}>
         <TabList>
-          <Tab>Pollings</Tab>
-          <Tab>Results</Tab>
+          {
+            this.state.tabNames.map(name => (
+              <Tab>
+                {name}
+              </Tab>
+            ))
+          }
         </TabList>
-        <TabPanel>
-          <PollingView></PollingView>
-        </TabPanel>
-        <TabPanel>
-          <ResultView></ResultView>
-        </TabPanel>
+        {
+          this.state.tabContents.map(content => {
+            const DynamicTag = content;
+            return (<TabPanel>
+              <DynamicTag></DynamicTag>
+            </TabPanel>)
+          })
+        }
       </Tabs>
     )
   }
