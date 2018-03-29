@@ -591,6 +591,7 @@ let data = [{
 data = data.map(item => {
   item['Con'] = Math.round(Number.parseFloat(item['Con']) * 1000) / 1000;
   item['Con'] = [item['Con'], item['Con'] - 0.05];
+  item['avg'] = (item['Con'][0] + item['Con'][1]) / 2
   return item;
 });
 
@@ -599,7 +600,7 @@ const TwitterView = () => (
       padding: '0.5em'
     }}>
     <h3>Sample Area Graph</h3>
-    <AreaGraph displayData={data} nameKey={'date'} valueKey={'Con'} />
+    <AreaGraph regressionKey={'avg'} displayData={data} nameKey={'date'} valueKey={'Con'} />
   </div>
 );
 

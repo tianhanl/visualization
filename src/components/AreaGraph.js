@@ -1,12 +1,13 @@
 import React from 'react';
 import {
   ResponsiveContainer,
-  AreaChart,
+  ComposedChart,
   Area,
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip
+  Tooltip,
+  Line
 }
 from 'recharts';
 const defaultColors = [
@@ -22,15 +23,19 @@ const AreaGraph = ({
   displayData,
   valueKey,
   nameKey,
+  regressionKey,
   colors = defaultColors
 }) => (<ResponsiveContainer with={'90%'} height={400}>
-  <AreaChart data={displayData}>
+  <ComposedChart data={displayData}>
     <XAxis dataKey={nameKey}/>
     <YAxis/>
     <CartesianGrid strokeDasharray="3 3"/>
     <Tooltip/>
-    <Area type='monotone' dataKey={valueKey} stroke='#8884d8' fill='#8884d8'/>
-  </AreaChart>
+    <Area type='monotone' dataKey={valueKey} stroke={colors[0]} fill={colors[0]}/>
+    {
+      regressionKey?<Line type='monotone' dataKey={regressionKey} stroke={colors[1]}/>:''
+    }
+  </ComposedChart>
 </ResponsiveContainer>);
 
 export default AreaGraph;
