@@ -1,4 +1,5 @@
 import React from 'react';
+import twitterData from '../utils/tweetData';
 
 import AreaGraph from './AreaGraph';
 let data = [{
@@ -597,8 +598,8 @@ data = data.map(item => {
 
 const TwitterView = () => (
   <div style={{
-      padding: '0.5em'
-    }}>
+    padding: '0.5em'
+  }}>
     <h3>Sample Area Graph</h3>
     <AreaGraph regressionKey={'avg'} displayData={data} nameKey={'date'} valueKey={'Con'} />
   </div>
