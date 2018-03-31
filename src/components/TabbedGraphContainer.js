@@ -16,7 +16,7 @@ class TabbedGraphContainer extends React.Component {
     super(props);
     this.state = {
       tabNames: this.props.tabNames,
-      tabContents: this.props.tabContents
+      tabContents: this.props.tabContentRenders
     }
   }
 
@@ -36,10 +36,11 @@ class TabbedGraphContainer extends React.Component {
           }
         </TabList>
         {
-          this.state.tabContents.map((content, index) => {
-            const DynamicTag = content;
+      this.props.tabContentRenders.map((contentRender, index) => {
             return (<TabPanel key={this.state.tabNames[index]}>
-              <DynamicTag></DynamicTag>
+              {
+                  contentRender()
+              }
             </TabPanel>)
           })
         }

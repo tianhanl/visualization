@@ -3,21 +3,19 @@ import React, {
 } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import TabbedGraphConntainer from './components/TabbedGraphContainer';
-import ResultView from './components/ResultView';
-import PollingView from './components/PollingView';
-import TwitterView from './components/TwitterView';
-const tabNames = [
-  'Pollings',
-  'Twitter',
-  'Results'
-];
-
-const tabContents = [
-  PollingView,
-  TwitterView,
-  ResultView
-];
+import GraphCreator from './components/GraphCreator';
+// const tabNames = [
+//   'Pollings',
+//   'Twitter',
+//   'Results'
+// ];
+//
+// const tabContents = [
+//   PollingView,
+//   TwitterView,
+//   ResultView
+// ];
+//<TabbedGraphConntainer tabNames={tabNames} tabContents={tabContents} />
 
 class App extends Component {
   render() {
@@ -25,7 +23,8 @@ class App extends Component {
       <div style={{
           color: '#515151'
         }} className="App">
-        <TabbedGraphConntainer tabNames={tabNames} tabContents={tabContents} />
+
+        <GraphCreator></GraphCreator>
       </div>
     );
   }
