@@ -19,7 +19,8 @@ class TabbedGraphContainer extends React.Component {
         style={{
           maxWidth: '90%',
           margin: 'auto'
-        }}>
+        }}
+      >
         <TabList>
           {this.state.tabNames.map(name => <Tab key={name}>{name}</Tab>)}
         </TabList>
@@ -34,5 +35,10 @@ class TabbedGraphContainer extends React.Component {
     );
   }
 }
+
+TabbedGraphContainer.propTypes = {
+  tabContentRenders: PropTypes.array,
+  tabNames: PropTypes.array
+};
 
 export default TabbedGraphContainer;

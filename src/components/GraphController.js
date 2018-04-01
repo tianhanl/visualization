@@ -65,7 +65,8 @@ class GraphController extends React.Component {
             maxWidth: '960px',
             margin: 'auto'
           }}
-          className={'section'}>
+          className={'section'}
+        >
           <h3 className={'section-heading'}>Separated by:</h3>
           <Select
             name={'separation-key'}
@@ -78,7 +79,8 @@ class GraphController extends React.Component {
             checkboxDepth={2}
             name="activeKeys"
             value={this.state.activeKeys}
-            onChange={this.activeKeysChanged}>
+            onChange={this.activeKeysChanged}
+          >
             {this.props.selectableKeys.map(element => (
               <label style={{ display: 'inline-block' }} key={element}>
                 <Checkbox style={{ verticalAlign: 'middle' }} value={element} />

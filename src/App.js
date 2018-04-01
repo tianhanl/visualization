@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import SyntaxHighliter from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/styles/hljs';
 import './App.css';
 import GraphCreator from './components/GraphCreator';
+import { sampleDataString } from './utils/SampleDataGenerator';
+
 class App extends Component {
   render() {
     return (
@@ -9,8 +12,24 @@ class App extends Component {
         style={{
           color: '#515151'
         }}
-        className="App">
-        <GraphCreator />
+        className="App"
+      >
+        <section>
+          <p>This graph is created using following JSON</p>
+          <div
+            style={{
+              margin: 'auto',
+              maxHeight: '300px',
+              overflow: 'auto',
+              width: '90%'
+            }}
+          >
+            <SyntaxHighliter wrapLines={true} language="json" style={docco}>
+              {sampleDataString}
+            </SyntaxHighliter>
+          </div>
+        </section>
+        <GraphCreator scenes={sampleDataString} />
       </div>
     );
   }

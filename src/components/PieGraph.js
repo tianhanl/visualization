@@ -8,6 +8,7 @@ import {
   Cell,
   LabelList
 } from 'recharts';
+import PropTypes from 'prop-types';
 const defaultColors = [
   '#B0F566',
   '#4AF2A1',
@@ -35,7 +36,8 @@ const PieGraph = ({
         cy={'50%'}
         outerRadius={80}
         fill="#8884d8"
-        label={false}>
+        label={false}
+      >
         {displayData.map((entry, index) => (
           <Cell key={index} fill={colors[index % colors.length]} />
         ))}
@@ -51,5 +53,12 @@ const PieGraph = ({
     </PieChart>
   </ResponsiveContainer>
 );
+
+PieGraph.propTypes = {
+  displayData: PropTypes.array,
+  valueKey: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  nameKey: PropTypes.string,
+  colors: PropTypes.array
+};
 
 export default PieGraph;

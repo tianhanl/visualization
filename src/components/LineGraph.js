@@ -31,7 +31,8 @@ const LineGraph = ({
   <ResponsiveContainer width={'90%'} height={400}>
     <LineChart
       data={displayData}
-      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+    >
       <XAxis dataKey={nameKey} />
       <YAxis />
       <CartesianGrid strokeDasharray="3 3" />
@@ -60,7 +61,8 @@ const LineGraph = ({
 
 LineGraph.propTypes = {
   displayData: PropTypes.array,
-  lineKeys: PropTypes.array,
+  valueKey: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  nameKey: PropTypes.string,
   colors: PropTypes.array
 };
 
