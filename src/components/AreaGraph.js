@@ -8,8 +8,7 @@ import {
   CartesianGrid,
   Tooltip,
   Line
-}
-from 'recharts';
+} from 'recharts';
 const defaultColors = [
   '#B0F566',
   '#4AF2A1',
@@ -25,17 +24,26 @@ const AreaGraph = ({
   nameKey,
   regressionKey,
   colors = defaultColors
-}) => (<ResponsiveContainer with={'90%'} height={400}>
-  <ComposedChart data={displayData}>
-    <XAxis dataKey={nameKey}/>
-    <YAxis/>
-    <CartesianGrid strokeDasharray="3 3"/>
-    <Tooltip/>
-    <Area type='monotone' dataKey={valueKey} stroke={colors[0]} fill={colors[0]}/>
-    {
-      regressionKey?<Line type='monotone' dataKey={regressionKey} stroke={colors[1]}/>:''
-    }
-  </ComposedChart>
-</ResponsiveContainer>);
+}) => (
+  <ResponsiveContainer with={'90%'} height={400}>
+    <ComposedChart data={displayData}>
+      <XAxis dataKey={nameKey} />
+      <YAxis />
+      <CartesianGrid strokeDasharray="3 3" />
+      <Tooltip />
+      <Area
+        type="monotone"
+        dataKey={valueKey}
+        stroke={colors[0]}
+        fill={colors[0]}
+      />
+      {regressionKey ? (
+        <Line type="monotone" dataKey={regressionKey} stroke={colors[1]} />
+      ) : (
+        ''
+      )}
+    </ComposedChart>
+  </ResponsiveContainer>
+);
 
 export default AreaGraph;

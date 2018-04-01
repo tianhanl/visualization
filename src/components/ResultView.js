@@ -2,7 +2,8 @@ import React from 'react';
 import PieGraph from './PieGraph';
 import PropTypes from 'prop-types';
 
-const data = [{
+const data = [
+  {
     candidate: 'Theresa May',
     'twitter pro': '0.63',
     'twitter con': '0.62',
@@ -81,21 +82,22 @@ const data = [{
     'user pro': '0',
     'user con': '0',
     prediction: '0'
-  }]
-
+  }
+];
 
 const valueKeys = [
-    "twitter pro",
-    "twitter con",
-    "user pro",
-    "user con",
-    "prediction"
+  'twitter pro',
+  'twitter con',
+  'user pro',
+  'user con',
+  'prediction'
 ];
 
 const nameKey = 'candidate';
 
 const dataList = valueKeys.map(key => {
-  return data.map(element => ({
+  return data
+    .map(element => ({
       name: element[nameKey],
       value: Math.round(Number.parseFloat(element[key]) * 1000) / 1000
     }))
@@ -106,59 +108,60 @@ const actualResult = [
   {
     name: 'Thersea May',
     value: 0.424
-  }, {
+  },
+  {
     name: 'Jeremy Corbyn',
-    value: 0.400
-  }, {
+    value: 0.4
+  },
+  {
     name: 'Nicola Sturgeon',
     value: 0.003
-  }, {
+  },
+  {
     name: 'Tim Farron',
     value: 0.007
-  }, {
+  },
+  {
     name: 'Arlene Foster',
     value: 0.001
-  }, {
+  },
+  {
     name: 'Gerry Adams',
     value: 0.001
-  }, {
+  },
+  {
     name: 'Leanne Wood',
     value: 0.001
-  }, {
+  },
+  {
     name: 'Jonathan Bartley Caroline Lucas',
     value: 0.002
   }
-]
-
-
-
+];
 
 const ResultView = () => (
-  <div style={{
+  <div
+    style={{
       padding: '0.5em'
     }}>
     <section>
-      <h3>
-        {'Prediction'}
-      </h3>
+      <h3>{'Prediction'}</h3>
       <PieGraph
         key={'prediction'}
-        displayData={dataList[dataList.length-1]}
+        displayData={dataList[dataList.length - 1]}
         nameKey={'name'}
-        valueKey={'value'}>
-      </PieGraph>
+        valueKey={'value'}
+      />
     </section>
     format
     <section>
-      <h3>
-        {'Actual Result'}
-      </h3>
+      <h3>{'Actual Result'}</h3>
       <PieGraph
         key={'actual result'}
         displayData={actualResult}
         nameKey={'name'}
-        valueKey={'value'}>
-      </PieGraph>
+        valueKey={'value'}
+      />
     </section>
   </div>
 );
@@ -166,6 +169,6 @@ const ResultView = () => (
 ResultView.propTypes = {
   dataList: PropTypes.array,
   lineKeys: PropTypes.array
-}
+};
 
 export default ResultView;

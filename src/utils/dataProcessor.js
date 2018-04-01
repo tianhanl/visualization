@@ -1,7 +1,3 @@
-import React from 'react';
-import twitterData from '../utils/tweetData';
-
-import AreaGraph from './AreaGraph';
 let data = [
   {
     date: '2017-07-18',
@@ -590,26 +586,23 @@ let data = [
   }
 ];
 
-data = data.map(item => {
-  item['Con'] = Math.round(Number.parseFloat(item['Con']) * 1000) / 1000;
-  item['Con'] = [item['Con'], item['Con'] - 0.05];
-  item['avg'] = (item['Con'][0] + item['Con'][1]) / 2;
-  return item;
-});
+const numKeys = [
+  'Con',
+  'Lab',
+  'Lib Dem',
+  'SNP',
+  'Plaid',
+  'Green',
+  'UKIP',
+  'Others',
+  'Lead'
+];
 
-const TwitterView = () => (
-  <div
-    style={{
-      padding: '0.5em'
-    }}>
-    <h3>Sample Area Graph</h3>
-    <AreaGraph
-      regressionKey={'avg'}
-      displayData={data}
-      nameKey={'date'}
-      valueKey={'Con'}
-    />
-  </div>
+console.log(
+  data.map(element => {
+    for (let i = 0; i < numKeys.length; i++) {
+      element[numKeys[i]] = Number.parseFloat(element[numKeys[i]]);
+    }
+    return element;
+  })
 );
-
-export default TwitterView;
