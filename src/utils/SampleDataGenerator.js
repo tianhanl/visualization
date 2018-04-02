@@ -1281,6 +1281,6 @@ let sampleData = [
   }
 ];
 
-let sampleDataString = JSON.stringify(sampleData);
+let sampleDataString = JSON.stringify(sampleData, null, ' ');
 
 export { sampleData, sampleDataString };
