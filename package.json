@@ -5,7 +5,9 @@
   "homepage": "http://tianhanl.github.io/visualization",
   "dependencies": {
     "gh-pages": "^1.1.0",
+    "json-formatter-js": "^2.2.0",
     "papaparse": "^4.3.7",
+    "prettier": "^1.11.1",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-checkbox-group": "^4.0.1",

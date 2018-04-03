@@ -16,14 +16,7 @@ class App extends Component {
       >
         <section>
           <p>This graph is created using following JSON</p>
-          <div
-            style={{
-              margin: 'auto',
-              maxHeight: '300px',
-              overflow: 'auto',
-              width: '90%'
-            }}
-          >
+          <div className={'codebox'}>
             <SyntaxHighliter wrapLines={true} language="json" style={docco}>
               {sampleDataString}
             </SyntaxHighliter>

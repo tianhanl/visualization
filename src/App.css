@@ -23,6 +23,20 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.codebox {
+  max-width: 90%;
+  height: 300px;
+  margin: auto;
+  overflow-y: scroll;
+  /* Used fix the scroll bar issue on iOS devices */
+  -webkit-overflow-scrolling: touch;
+  text-align: left;
 }
