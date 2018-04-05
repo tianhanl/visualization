@@ -10,6 +10,12 @@ const PIE = 'pie';
 const LINE = 'line';
 const AREA = 'area';
 
+const graphConstructors = {
+  pie: PieGraph,
+  line: LineGraph,
+  area: AreaGraph
+};
+
 const defaultScenes = [
   {
     title: 'Result',
@@ -61,39 +67,18 @@ class GraphCreator extends React.Component {
   }
   createScene = scene => {
     let render = null;
-    switch (scene.graphType) {
-      case PIE:
-        render = (tabName, data, nameKey, valueKey) => (
-          <PieGraph
-            key={tabName}
-            displayData={data}
-            nameKey={nameKey}
-            valueKey={valueKey}
-          />
-        );
-        break;
-      case AREA:
-        render = (tabName, data, nameKey, valueKey) => (
-          <AreaGraph
-            key={tabName}
-            displayData={data}
-            nameKey={nameKey}
-            valueKey={valueKey}
-          />
-        );
-        break;
-      case LINE:
-        render = (tabName, data, nameKey, valueKey) => (
-          <LineGraph
-            key={tabName}
-            displayData={data}
-            nameKey={nameKey}
-            valueKey={valueKey}
-          />
-        );
-        break;
-      default:
-        render = () => <h3>A graph type must be specified</h3>;
+    if (scene.graphType) {
+      let CurrentGraph = graphConstructors[scene.graphType];
+      render = (tabName, data, nameKey, valueKey) => (
+        <CurrentGraph
+          key={tabName}
+          displayData={data}
+          nameKey={nameKey}
+          valueKey={valueKey}
+        />
+      );
+    } else {
+      render = () => <h3>A graph type must be specified</h3>;
     }
     if (scene.needController) {
       return (

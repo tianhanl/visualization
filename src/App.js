@@ -3,7 +3,7 @@ import SyntaxHighliter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/styles/hljs';
 import './App.css';
 import GraphCreator from './components/GraphCreator';
-import { sampleDataString } from './utils/SampleDataGenerator';
+import { graphSceneString } from './utils/finalData';
 
 class App extends Component {
   render() {
@@ -18,11 +18,11 @@ class App extends Component {
           <p>This graph is created using following JSON</p>
           <div className={'codebox'}>
             <SyntaxHighliter wrapLines={true} language="json" style={docco}>
-              {sampleDataString}
+              {graphSceneString}
             </SyntaxHighliter>
           </div>
         </section>
-        <GraphCreator scenes={sampleDataString} />
+        <GraphCreator scenes={graphSceneString} />
       </div>
     );
   }

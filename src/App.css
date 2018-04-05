@@ -33,7 +33,7 @@
 
 .codebox {
   max-width: 90%;
-  height: 300px;
+  max-height: 300px;
   margin: auto;
   overflow-y: scroll;
   /* Used fix the scroll bar issue on iOS devices */
