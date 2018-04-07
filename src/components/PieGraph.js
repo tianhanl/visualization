@@ -23,19 +23,18 @@ const PieGraph = ({
   displayData,
   valueKey,
   nameKey,
-  colors = defaultColors
+  colors = defaultColors,
+  width = '90%',
+  height = 400
 }) => (
-  <ResponsiveContainer with={'90%'} height={400}>
-    <PieChart width={800} height={400}>
+  <ResponsiveContainer width={width} height={height}>
+    <PieChart>
       <Pie
         nameKey={nameKey}
         dataKey={valueKey}
         isAnimationActive={false}
         data={displayData}
-        cx={'50%'}
-        cy={'50%'}
-        outerRadius={80}
-        fill="#8884d8"
+        outerRadius={'60%'}
         label={false}
       >
         {displayData.map((entry, index) => (
@@ -58,7 +57,9 @@ PieGraph.propTypes = {
   displayData: PropTypes.array,
   valueKey: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   nameKey: PropTypes.string,
-  colors: PropTypes.array
+  colors: PropTypes.array,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.number
 };
 
 export default PieGraph;

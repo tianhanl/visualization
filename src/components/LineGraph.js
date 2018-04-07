@@ -26,9 +26,11 @@ const LineGraph = ({
   displayData,
   valueKey,
   nameKey,
-  colors = defaultColors
+  colors = defaultColors,
+  width = '90%',
+  height = 400
 }) => (
-  <ResponsiveContainer width={'90%'} height={400}>
+  <ResponsiveContainer width={width} height={height}>
     <LineChart
       data={displayData}
       margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
@@ -44,6 +46,7 @@ const LineGraph = ({
             type="monotone"
             key={key}
             dataKey={key}
+            dot={!(displayData.length > 100)}
             stroke={colors[index % colors.length]}
           />
         ))
@@ -53,6 +56,7 @@ const LineGraph = ({
           key={valueKey}
           dataKey={valueKey}
           stroke={colors[0]}
+          dot={!(displayData.length > 100)}
         />
       )}
     </LineChart>
@@ -63,7 +67,9 @@ LineGraph.propTypes = {
   displayData: PropTypes.array,
   valueKey: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   nameKey: PropTypes.string,
-  colors: PropTypes.array
+  colors: PropTypes.array,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.number
 };
 
 export default LineGraph;

@@ -24,9 +24,11 @@ const AreaGraph = ({
   valueKey,
   nameKey,
   regressionKey,
-  colors = defaultColors
+  colors = defaultColors,
+  width = '90%',
+  height = 400
 }) => (
-  <ResponsiveContainer with={'90%'} height={400}>
+  <ResponsiveContainer width={width} height={height}>
     <ComposedChart data={displayData}>
       <XAxis dataKey={nameKey} />
       <YAxis />
@@ -38,6 +40,7 @@ const AreaGraph = ({
             key={key}
             type="monotone"
             dataKey={key}
+            dot={!(displayData.length > 100)}
             stroke={colors[index % colors.length]}
             fill={colors[index % colors.length]}
           />
@@ -47,6 +50,7 @@ const AreaGraph = ({
           type="monotone"
           dataKey={valueKey}
           stroke={colors[0]}
+          dot={!(displayData.length > 100)}
           fill={colors[0]}
         />
       )}
@@ -64,7 +68,9 @@ AreaGraph.propTypes = {
   displayData: PropTypes.array,
   valueKey: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   nameKey: PropTypes.string,
-  colors: PropTypes.array
+  colors: PropTypes.array,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.number
 };
 
 export default AreaGraph;
