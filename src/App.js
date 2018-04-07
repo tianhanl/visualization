@@ -10,7 +10,8 @@ class App extends Component {
     return (
       <div
         style={{
-          color: '#515151'
+          color: '#515151',
+          minHeight: '95vh'
         }}
         className="App"
       >

@@ -1,5 +1,4 @@
 import React from 'react';
-import LineGraphContainer from './LineGraphContainer';
 import { Checkbox, CheckboxGroup } from 'react-checkbox-group';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
