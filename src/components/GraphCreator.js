@@ -105,7 +105,7 @@ class GraphCreator extends React.Component {
             );
           } else {
             return (
-              <section key={graph.graphName}>
+              <section style={{ flex: '1 1 60%' }} key={graph.graphName}>
                 <h4>{graph.graphName}</h4>
                 <CurrentGraph
                   displayData={graph.data}
@@ -122,7 +122,15 @@ class GraphCreator extends React.Component {
       return (
         <section key={scene.title}>
           <h2>{scene.title}</h2>
-          {graphes}
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            {graphes}
+          </div>
         </section>
       );
     }
