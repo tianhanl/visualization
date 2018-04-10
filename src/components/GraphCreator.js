@@ -5,6 +5,7 @@ import LineGraph from './LineGraph';
 import PieGraph from './PieGraph';
 import TabbedGraphContainer from './TabbedGraphContainer';
 import GraphController from './GraphController';
+import './GraphCreator.css';
 // graph types
 const PIE = 'pie';
 const LINE = 'line';
@@ -105,7 +106,7 @@ class GraphCreator extends React.Component {
             );
           } else {
             return (
-              <section style={{ flex: '1 1 60%' }} key={graph.graphName}>
+              <section className={'graph-container'} key={graph.graphName}>
                 <h4>{graph.graphName}</h4>
                 <CurrentGraph
                   displayData={graph.data}
@@ -122,15 +123,7 @@ class GraphCreator extends React.Component {
       return (
         <section key={scene.title}>
           <h2>{scene.title}</h2>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
-          >
-            {graphes}
-          </div>
+          <div className={'tab-container'}>{graphes}</div>
         </section>
       );
     }
