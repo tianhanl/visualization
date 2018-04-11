@@ -18398,6 +18398,7 @@ const graphScenes = [
     tabName: 'Twitter Pros',
     graphes: [{
         data: twitterPros,
+        graphName: 'Twitter Pros',
     nameKey: 'date',
     valueKey: [
       "Theresa May",
@@ -18432,6 +18433,7 @@ const graphScenes = [
     tabName: 'Twitter Cons',
     graphes: [{
         data: twitterCons,
+        graphName: 'Twitter Cons',
     nameKey: 'date',
     valueKey: [
       "Theresa May",
