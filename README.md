@@ -7,52 +7,88 @@ Built on top of recharts.
 
 [Live Demo](http://tianhang.me/visualization/)
 
-## Format of graph configuration json
+## Format of graph configuration object/json
 
-```json
+```javascript
 [
   {
-    "title": "Result",
-    "data": [
-      { "name": "Thersea May", "value": 0.424 },
-      { "name": "Jeremy Corbyn", "value": 0.4 },
-      { "name": "Nicola Sturgeon", "value": 0.003 },
-      { "name": "Tim Farron", "value": 0.007 },
-      { "name": "Arlene Foster", "value": 0.001 },
-      { "name": "Gerry Adams", "value": 0.001 },
-      { "name": "Leanne Wood", "value": 0.001 },
-      { "name": "Jonathan Bartley Caroline Lucas", "value": 0.002 }
+    // Title of current scene
+    title: 'Predictions',
+    // Required to display the item in tabbed container
+    tabName: 'Predictions'
+    graphes: [
+      {
+        // the data you want to display
+        data: arimaPrediction,
+        // Do you want to allow users
+        needController: false,
+        // Which key should be used to extract name
+        nameKey: 'candidate',
+        // Which key should be used to extract value
+        valueKey: 'prediction',
+        // Which type of graph you want to create
+        graphType: PIE,
+        // The name of the graph
+        graphName: 'ARIMA result'
+      },
+      {
+        data: lstmPrediction,
+        needController: false,
+        nameKey: 'candidate',
+        valueKey: 'prediction',
+        graphType: PIE,
+        graphName: 'LSTM Result'
+      },
+      {
+        data: actulResults,
+        needController: false,
+        nameKey: 'name',
+        valueKey: 'value',
+        graphType: PIE,
+        graphName: 'Actual Results'
+      }
+    ]
+  },
+  {
+    title: 'Pollings',
+    graphes: [
+      {
+        data: pollings,
+        nameKey: 'date',
+        // value key can also be an array
+        valueKey: [
+          'Theresa May',
+          'Jeremy Corbyn',
+          'Nicola Sturgeon',
+          'Tim Farron',
+          'Arlene Foster',
+          'Gerry Adams',
+          'Leanne Wood',
+          'Jonathan Bartley Caroline Lucas',
+          'John Bercow',
+          'Sylvia Hermon'
+        ],
+        // The values you want to allow users to toggle
+        selectableKeys: [
+          'Theresa May',
+          'Jeremy Corbyn',
+          'Nicola Sturgeon',
+          'Tim Farron',
+          'Arlene Foster',
+          'Gerry Adams',
+          'Leanne Wood',
+          'Jonathan Bartley Caroline Lucas',
+          'John Bercow',
+          'Sylvia Hermon'
+        ],
+        graphType: LINE,
+        graphName: 'pollings',
+        needController: true
+      }
     ],
-    "needController": false,
-    "nameKey": "name",
-    "valueKey": "value",
-    // "valueKey": [
-    //           "Con",
-    //           "Lab",
-    //           "Lib Dem",
-    //           "SNP",
-    //           "Plaid",
-    //           "Green",
-    //           "UKIP",
-    //           "Others",
-    //           "Lead"
-    //         ],
-    // "selectableKeys": [
-    //   "Con",
-    //   "Lab",
-    //   "Lib Dem",
-    //   "SNP",
-    //   "Plaid",
-    //   "Green",
-    //   "UKIP",
-    //   "Others",
-    //   "Lead"
-    // ],
-    // "separationKeys": ["agency"],
-    "graphType": "pie",
-    "tabName": "Result"
+    tabName: 'Pollings'
   }
-]
+];
 ```
 
 ## Current Components
