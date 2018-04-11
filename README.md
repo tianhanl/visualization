@@ -69,6 +69,7 @@ Built on top of recharts.
           'Sylvia Hermon'
         ],
         // The values you want to allow users to toggle
+        // Selectable keys do not have to include all value keys
         selectableKeys: [
           'Theresa May',
           'Jeremy Corbyn',

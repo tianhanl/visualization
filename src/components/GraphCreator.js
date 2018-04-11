@@ -82,7 +82,8 @@ class GraphCreator extends React.Component {
               <GraphController
                 key={graph.graphName}
                 data={graph.data}
-                selectableKeys={graph.valueKey}
+                selectableKeys={graph.selectableKeys}
+                valueKeys={graph.valueKey}
                 separationKeys={graph.separationKeys}
                 render={(dataList, activeKeys) => (
                   <section>
@@ -140,7 +141,10 @@ class GraphCreator extends React.Component {
       <div>
         {this.props.needTab ? (
           <TabbedGraphContainer
-            tabNames={this.parsedScenes.map(scene => scene['tabName'])}
+            tabNames={this.parsedScenes.map(
+              (scene, index) =>
+                scene['tabName'] ? scene['tabName'] : `graph-${index}`
+            )}
             tabContentRenders={this.parsedScenes.map(scene => () =>
               this.createScene(scene)
             )}

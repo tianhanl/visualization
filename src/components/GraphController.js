@@ -14,16 +14,21 @@ class GraphController extends React.Component {
       value: key,
       label: key
     }));
+    let selectableKeySet = new Set(this.props.selectableKeys);
+    let stableKeys = this.props.valueKeys.filter(
+      key => !selectableKeySet.has(key)
+    );
     this.state = {
-      activeKeys: [...props.selectableKeys],
+      activeSelectableKeys: [...props.selectableKeys],
       separationKeys,
+      stableKeys,
       activeSeparationKey: 'original'
     };
   }
 
-  activeKeysChanged = newKeys => {
+  handleActiveSelectableKeysChanged = newKeys => {
     this.setState({
-      activeKeys: newKeys
+      activeSelectableKeys: newKeys
     });
   };
 
@@ -32,6 +37,11 @@ class GraphController extends React.Component {
       activeSeparationKey: selectedOption.value
     });
   };
+
+  // computed
+  get activeKeys() {
+    return this.state.stableKeys.concat(this.state.activeSelectableKeys);
+  }
 
   _unique = originalArray => {
     return Array.from(new Set(originalArray));
@@ -76,9 +86,9 @@ class GraphController extends React.Component {
           <CheckboxGroup
             style={{ margin: 0, padding: '1em 0' }}
             checkboxDepth={2}
-            name="activeKeys"
-            value={this.state.activeKeys}
-            onChange={this.activeKeysChanged}
+            name="activeSelectableKeys"
+            value={this.state.activeSelectableKeys}
+            onChange={this.handleActiveSelectableKeysChanged}
           >
             {this.props.selectableKeys.map(element => (
               <label style={{ display: 'inline-block' }} key={element}>
@@ -90,7 +100,7 @@ class GraphController extends React.Component {
         </div>
         {this.props.render(
           this._groupBy(this.props.data, this.state.activeSeparationKey),
-          this.state.activeKeys
+          this.activeKeys
         )}
       </div>
     );
@@ -101,6 +111,7 @@ GraphController.propTypes = {
   separationKeys: PropTypes.array,
   data: PropTypes.array,
   selectableKeys: PropTypes.array,
+  valueKeys: PropTypes.array,
   render: PropTypes.func
 };
 
