@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-let content = fs.readFileSync('./uk_final_data.json');
+let content = fs.readFileSync('./data/uk_final_data_parsed.json');
 let data = JSON.parse(content);
 
 const dataKeys = Object.keys(data[0]);

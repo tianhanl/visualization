@@ -92,7 +92,7 @@ Built on top of recharts.
 ];
 ```
 
-## Current Components
+## Utility Components
 
 ### GraphCreator
 
@@ -102,19 +102,6 @@ Component that translate input json/object to graphs.
 
 * `scenes`, a json string or a array of objects formatted as specified.
 * `needTab`, a boolean that change whether users can view the graph in different tabs
-
-### LineGraph
-
-Basic component for line graph.
-
-#### Props
-
-* `displayData`, array of items you want to display
-* `valueKey`, the keys of fields in each item you want to display (y value)
-* `nameKey`, the key of field contating name (x value)
-* `colors`, optional parameter for setting what colors the line will use
-
-All basic component graph share same interface
 
 ### TabbedGraphContainer
 
@@ -135,3 +122,38 @@ Container that allows user to choose which key they want to display, and how are
 * `separationKeys`, keys users can choose to seaprate the grahps
 * `selectableKeys`, keys user can toggle to display/hide a specifc filed of in dat .
 * `render`, render for controlled graph
+
+## Representational Components
+
+### LineGraph
+
+Basic component for line graph.
+
+#### Props
+
+* `displayData`, array of items you want to display
+* `valueKey`, the keys of fields in each item you want to display (y value)
+* `nameKey`, the key of field contating name (x value)
+* `colors`, optional parameter for setting what colors the line will use
+
+### PieGraph
+
+Basic component for pie graph
+
+#### Props
+
+* `displayData`, array of items you want to display
+* `valueKey`, the keys of fields in each item you want to display (y value)
+* `nameKey`, the key of field contating name (x value)
+* `colors`, optional parameter for setting what colors the line will use
+
+### AreaGraph
+
+Basic component for are graph
+
+#### Props
+
+* `displayData`, array of items you want to display
+* `valueKey`, the keys of fields in each item you want to display (y value)
+* `nameKey`, the key of field contating name (x value)
+* `colors`, optional parameter for setting what colors the line will use
