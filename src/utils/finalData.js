@@ -18311,10 +18311,51 @@ const predictions = {
 const lstmPrediction = predictions['LSTM'];
 const arimaPrediction = predictions['ARIMA'];
 const pollings = finalData['pollings'];
-const twitterPros = finalData['twitterPros'];
-const twitterCons = finalData['twitterCons'];
+let twitterPros = finalData['twitterPros'];
+let twitterCons = finalData['twitterCons'];
 const userPros = finalData['userPros'];
 const userCons = finalData['userCons'];
+const names = [
+  'Theresa May',
+  'Jeremy Corbyn',
+  'Nicola Sturgeon',
+  'Tim Farron',
+  'Arlene Foster',
+  'Gerry Adams',
+  'Leanne Wood',
+  'Jonathan Bartley Caroline Lucas',
+  'John Bercow',
+  'Sylvia Hermon'
+];
+const twitterRange = twitterPros.map((element, index) => {
+  let output = {};
+  output['date'] = element['date'];
+  output['total'] = 0;
+  for (let name of names) {
+    output['total'] += (element[name] + twitterCons[index][name]);
+  }
+  output['total'] = output['total'] === 0?1:output['total'];
+  return output;
+});
+
+twitterPros = twitterPros.map((element, index) => {
+  let output = {};
+  output['date'] = element['date'];
+  for (let name of names) {
+    output[name] = Math.round((element[name]/twitterRange[index]['total']) * 100)/100;
+  }
+  return output;
+})
+
+twitterCons = twitterCons.map((element, index) => {
+  let output = {};
+  output['date'] = element['date'];
+  for (let name of names) {
+    output[name] = Math.round((element[name]/twitterRange[index]['total']) * 100)/100;
+  }
+  return output;
+})
+
 const actulResults = [
   { name: 'Thersea May', value: 0.488 },
   { name: 'Jeremy Corbyn', value: 0.403 },
@@ -18363,107 +18404,45 @@ const graphScenes = [
       {
         data: pollings,
         nameKey: 'date',
-        valueKey: [
-          'Theresa May',
-          'Jeremy Corbyn',
-          'Nicola Sturgeon',
-          'Tim Farron',
-          'Arlene Foster',
-          'Gerry Adams',
-          'Leanne Wood',
-          'Jonathan Bartley Caroline Lucas',
-          'John Bercow',
-          'Sylvia Hermon'
-        ],
-        selectableKeys: [
-          'Theresa May',
-          'Jeremy Corbyn',
-          'Nicola Sturgeon',
-          'Tim Farron',
-          'Arlene Foster',
-          'Gerry Adams',
-          'Leanne Wood',
-          'Jonathan Bartley Caroline Lucas',
-          'John Bercow',
-          'Sylvia Hermon'
-        ],
+        valueKey: names,
+        selectableKeys: names,
         graphType: LINE,
         graphName: 'pollings',
         needController: true
       }
     ],
     tabName: 'Pollings'
-  }, {
+  },
+  {
     title: 'Twitter Pros',
     tabName: 'Twitter Pros',
-    graphes: [{
+    graphes: [
+      {
         data: twitterPros,
         graphName: 'Twitter Pros',
-    nameKey: 'date',
-    valueKey: [
-      "Theresa May",
-      "Jeremy Corbyn",
-      "Nicola Sturgeon",
-      "Tim Farron",
-      "Arlene Foster",
-      "Gerry Adams",
-      "Leanne Wood",
-      "Jonathan Bartley Caroline Lucas",
-      "John Bercow",
-      "Sylvia Hermon"
-  ],
-  selectableKeys: [
-      "Theresa May",
-      "Jeremy Corbyn",
-      "Nicola Sturgeon",
-      "Tim Farron",
-      "Arlene Foster",
-      "Gerry Adams",
-      "Leanne Wood",
-      "Jonathan Bartley Caroline Lucas",
-      "John Bercow",
-      "Sylvia Hermon"
-  ],
-  graphType: LINE,
-  needController: true
-    }],
-    
-},{
+        nameKey: 'date',
+        valueKey: names,
+        selectableKeys: names,
+        graphType: LINE,
+        needController: true
+      }
+    ]
+  },
+  {
     title: 'Twitter Cons',
     tabName: 'Twitter Cons',
-    graphes: [{
+    graphes: [
+      {
         data: twitterCons,
         graphName: 'Twitter Cons',
-    nameKey: 'date',
-    valueKey: [
-      "Theresa May",
-      "Jeremy Corbyn",
-      "Nicola Sturgeon",
-      "Tim Farron",
-      "Arlene Foster",
-      "Gerry Adams",
-      "Leanne Wood",
-      "Jonathan Bartley Caroline Lucas",
-      "John Bercow",
-      "Sylvia Hermon"
-  ],
-  selectableKeys: [
-      "Theresa May",
-      "Jeremy Corbyn",
-      "Nicola Sturgeon",
-      "Tim Farron",
-      "Arlene Foster",
-      "Gerry Adams",
-      "Leanne Wood",
-      "Jonathan Bartley Caroline Lucas",
-      "John Bercow",
-      "Sylvia Hermon"
-  ],
-  graphType: LINE,
-  needController: true
-    }],
-    
-},
+        nameKey: 'date',
+        valueKey: names,
+        selectableKeys: names,
+        graphType: LINE,
+        needController: true
+      }
+    ]
+  }
 ];
 const graphSceneString = JSON.stringify(graphScenes, 0, 2);
 

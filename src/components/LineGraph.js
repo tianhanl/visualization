@@ -19,7 +19,10 @@ const defaultColors = [
   '#6638F0',
   '#F78AE0',
   '#FFBF45',
-  '#515151'
+  '#515151',
+  '#FFED78',
+  '#2C3E50',
+  '#F07883'
 ];
 
 const LineGraph = ({

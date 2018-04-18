@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  font-family: 'HelveticaNeue', 'Helvetica Neue', 'Helvetica Neue', Helvetica,
+    Arial, 'Lucida Grande', sans-serif;
+  min-height: 95vh;
+  padding: 1em 0;
 }
 
 .App-logo {
